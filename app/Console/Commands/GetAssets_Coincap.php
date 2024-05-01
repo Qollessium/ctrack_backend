@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\CryptoCurrency\SourceEnum;
 use App\Enums\CryptoCurrency\StatusEnum;
 use App\Helpers\APIs\CoincapApi;
 use App\Models\CryptoCurrency;
@@ -37,13 +38,14 @@ class GetAssets_Coincap extends Command
 
             foreach ($data['data'] as $cryptoData) {
                 CryptoCurrency::updateOrCreate(
-                    ['symbol' => $cryptoData['symbol']],
+                    ['coincap_id' => $cryptoData['id']],
                     [
+                        'coincap_id' => $cryptoData['id'],
                         'name' => $cryptoData['name'],
                         'description' => $cryptoData['id'],
                         'symbol' => $cryptoData['symbol'],
                         'status' => StatusEnum::ACTIVE,
-                        'source' => 'active',
+                        'source' => SourceEnum::COINCAP,
                     ]
                 );
             }

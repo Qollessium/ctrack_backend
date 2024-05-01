@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('crypto_currency_historicals', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('crypto_currency_id')->constrained()->onDelete('cascade');
+            $table->double('price');
+            $table->string('interval');
+            $table->datetime('date');
+            $table->string('source');
             $table->timestamps();
         });
     }

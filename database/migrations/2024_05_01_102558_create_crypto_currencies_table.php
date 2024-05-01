@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('crypto_currencies', function (Blueprint $table) {
             $table->id();
+            $table->string('coincap_id')->unique();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('symbol')->unique();
+            $table->string('symbol');
             $table->string('status')->default('inactive');
-            $table->string('source')->default('unknown');
+            $table->string('source');
             $table->timestamps();
         });
     }

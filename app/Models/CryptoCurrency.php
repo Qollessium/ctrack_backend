@@ -12,10 +12,12 @@ class CryptoCurrency extends Model
     use HasFactory;
 
     protected $fillable = [
+        'coincap_id',
         'name',
         'description',
         'symbol',
         'status',
+        'source',
     ];
 
     protected function casts(): array
