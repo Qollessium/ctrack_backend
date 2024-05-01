@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crypto_currencies', function (Blueprint $table) {
+        Schema::create('crypto_currency_user', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->string('symbol')->unique();
-            $table->string('status')->default('inactive');
-            $table->string('source')->default('unknown');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('crypto_currency_id')->constrained()->onDelete('cascade');
+
+            $table->string('analyze_method');
+            // $table->boolean('prioritized')->default(false);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crypto_currencies');
+        Schema::dropIfExists('crypto_currency_user');
     }
 };

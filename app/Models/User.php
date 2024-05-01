@@ -65,4 +65,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function cryptoCurrencies()
+    {
+        return $this->belongsToMany(CryptoCurrency::class)
+            ->withPivot('analyze_method')
+            ->withTimestamps();
+    }
 }
