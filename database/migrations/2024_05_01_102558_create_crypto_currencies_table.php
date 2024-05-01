@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('crypto_currencies', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('symbol')->unique();
+            $table->string('status')->default('deactive');
             $table->timestamps();
         });
     }
