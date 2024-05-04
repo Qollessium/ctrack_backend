@@ -20,6 +20,8 @@ Route::middleware('api')->group(function () {
 
     Route::prefix('user')->middleware([AuthenticateUser::class])->group(function () {
         Route::post('attachCryptoCurrency', [UserController::class, 'attachCryptoCurrency']);
+        Route::post('alarmSeen', [UserController::class, 'alarmSeen']);
+        Route::post('activateAlarm', [UserController::class, 'ActivateAlarm']);
         Route::post('detachCryptoCurrency', [UserController::class, 'detachCryptoCurrency']);
     });
 });
