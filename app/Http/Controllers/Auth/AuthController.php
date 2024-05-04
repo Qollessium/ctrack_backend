@@ -29,6 +29,10 @@ class AuthController extends Controller
      */
     public function login()
     {
+
+        // eğer email geçerli bir email değilse veritabanına istek atılıp kontrol yapılmaması lazım yani eğer geçerli değilse mail adresi
+        // şu kod çalıştırılmalı;
+        // return response()->json(['message' => 'Please provide valid email'], 422);
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
