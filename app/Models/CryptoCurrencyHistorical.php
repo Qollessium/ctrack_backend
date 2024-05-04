@@ -17,6 +17,7 @@ class CryptoCurrencyHistorical extends Model
         'interval',
         'date',
         'source',
+
     ];
 
     protected function casts(): array

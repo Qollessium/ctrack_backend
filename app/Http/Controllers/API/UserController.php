@@ -78,7 +78,12 @@ class UserController extends Controller
         $user = auth()->user();
         $cryptoCurrency = CryptoCurrency::find($request->crypto_currency_id);
 
-        $user->cryptoCurrencies()->attach($cryptoCurrency, ['analyze_method' => $request->analyze_method]);
+        $user->cryptoCurrencies()->attach($cryptoCurrency, [
+            'analyze_method' => $request->analyze_method,
+            'analyze_alarm' => $request->analyze_alarm,
+            'analyze_alarm_percent' => $request->analyze_alarm_percent,
+            'is_active' => $request->is_active,
+        ]);
 
         return response()->json(['message' => 'CryptoCurrency attached successfully'], 200);
     }

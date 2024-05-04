@@ -3,6 +3,7 @@
 namespace App\Http\Requests\API\User;
 
 use App\Enums\CryptoCurrency\User\AnalyzeMethodEnum;
+use App\Enums\CryptoCurrencyUser\AnalyzeAlarmEnum;
 use App\Models\CryptoCurrency;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
@@ -33,6 +34,18 @@ class AttachCryptoCurrencyRequest extends FormRequest
             'analyze_method' => [
                 'required',
                 new Enum(AnalyzeMethodEnum::class),
+            ],
+            'analyze_alarm' => [
+                'required',
+                new Enum(AnalyzeAlarmEnum::class),
+            ],
+            'analyze_alarm_percent' => [
+                'required',
+                'numeric'
+            ],
+            'is_active' => [
+                'required',
+                'boolean'
             ],
         ];
     }
