@@ -52,7 +52,9 @@ class AuthController extends Controller
     {
         // burada bir kontrol yapılmalı ve eğer email uygun bir email değil ise şu kod çalıştırılmalı;
         // return response()->json(['message' => 'Please provide valid email'], 422);
-
+        if(!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            return response()->json(['message' => 'Please provide valid email'], 422);
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -60,6 +62,7 @@ class AuthController extends Controller
         ]);
 
         return response()->json(['message' => 'User successfully registered'], 201);
+
     }
 
     /**
