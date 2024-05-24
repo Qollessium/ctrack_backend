@@ -25,7 +25,6 @@ class CryptoCurrency extends Model
         'last_record_m30',
         'last_record_h1',
         'last_record_h4',
-
         'last_change_percent_m1',
         'last_change_percent_m5',
         'last_change_percent_m15',

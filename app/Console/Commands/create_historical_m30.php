@@ -32,9 +32,9 @@ class create_historical_m30 extends Command
 
             $percentChange = null;
             if(!empty($cryptoCurrency->last_record_m30)) {
-                $last_record_m30 = $cryptoCurrency->last_record_m30;
+                $last_record_m30 = $cryptoCurrency->lastRecordM30;
                 $oldPrice = $last_record_m30->price;
-                $newPrice = $cryptoCurrency->price;
+                $newPrice = $cryptoCurrency->lastRecordM1->price;
 
                 if($oldPrice > 0 && $newPrice > 0) {
                     $priceChange = $newPrice - $oldPrice;

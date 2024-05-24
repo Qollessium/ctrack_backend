@@ -32,9 +32,9 @@ class create_historical_h1 extends Command
 
             $percentChange = null;
             if(!empty($cryptoCurrency->last_record_h1)) {
-                $last_record_h1 = $cryptoCurrency->last_record_h1;
+                $last_record_h1 = $cryptoCurrency->lastRecordH1;
                 $oldPrice = $last_record_h1->price;
-                $newPrice = $cryptoCurrency->price;
+                $newPrice = $cryptoCurrency->lastRecordM1->price;
 
                 if($oldPrice > 0 && $newPrice > 0) {
                     $priceChange = $newPrice - $oldPrice;
