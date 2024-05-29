@@ -34,13 +34,12 @@ class create_historical_h4 extends Command
             if(!empty($cryptoCurrency->last_record_h4)) {
                 $last_record_h4 = $cryptoCurrency->last_record_h4;
                 $oldPrice = $last_record_h4->price;
-                $newPrice = $cryptoCurrency->price;
+                $newPrice = $cryptoCurrency->lastRecordM1->price;
 
                 if($oldPrice > 0 && $newPrice > 0) {
                     $priceChange = $newPrice - $oldPrice;
                     $percentChange = ($priceChange / $oldPrice) * 100;
                 }
-                // burada eski fiyat ve yeni fiyat arasındaki yüzdelik fark hesaplanıp $percentChange değişkenine koyulmalı.
             }
 
             if(!empty($cryptoCurrency['last_record_m1'])) {
