@@ -31,6 +31,8 @@ class create_historical_h4 extends Command
         foreach ($allCryptoCurrencies as $cryptoCurrency) {
 
             $percentChange = null;
+
+            // fix here
             if(!empty($cryptoCurrency->last_record_h4)) {
                 $last_record_h4 = $cryptoCurrency->last_record_h4;
                 $oldPrice = $last_record_h4->price;
